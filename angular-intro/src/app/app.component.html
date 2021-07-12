@@ -1,3 +1,5 @@
+{{ friendModel | json }}
+
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand">Friends Book</a>
@@ -5,43 +7,38 @@
 </nav>
 
 <div class="container container-form">
-<form class="row g-3">
+<form class="row g-3 needs-validation" #formName="ngForm">
 
   <div class="col-md-6">
     <label for="inputFirstname" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="inputFirstname">
+    <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" [(ngModel)]="friendModel.inputFirstname"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputLastname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="inputLastname">
+    <input type="text" class="form-control" id="inputLastname" name="inputLastname" [(ngModel)]="friendModel.inputLastname"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputEmail" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail">
+    <input type="email" class="form-control" id="inputEmail" name="inputEmail" [(ngModel)]="friendModel.inputEmail"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputPhone" class="form-label">Phone</label>
-    <input type="tel" class="form-control" id="inputPhone">
+    <input type="tel" class="form-control" id="inputPhone" name="inputPhone" [(ngModel)]="friendModel.inputPhone"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputLanguage" class="form-label">Favorite lanuage</label>
-    <select id="inputLanguage" class="form-select">
-      <option selected>Choose...</option>
-      <option>Html</option>
-      <option>Css</option>
-      <option>Js</option>
-      <option>Php</option>
-      <option>Other</option>
+    <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage" [(ngModel)]="friendModel.selectFavoriteLanguage">
+      <option *ngFor="let n of favoriteLanguage">{{ n }}</option>
     </select>
   </div>
 
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
-  
+
 </form>
 </div>
