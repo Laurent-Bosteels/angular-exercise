@@ -9,6 +9,6 @@ import { Friend } from './friend'
 export class AppComponent {
   title = 'angular-intro';
   favoriteLanguage = ["Html", "Css", "Js", "Php", "Other"];
-  friendModel = new Friend("","","",32475635282,"")
+  friendModel = new Friend("","","","","")
 
 }

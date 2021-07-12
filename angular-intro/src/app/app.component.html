@@ -1,5 +1,6 @@
 {{ friendModel | json }}
 
+
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand">Friends Book</a>
@@ -11,27 +12,48 @@
 
   <div class="col-md-6">
     <label for="inputFirstname" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" [(ngModel)]="friendModel.inputFirstname"/>
+    <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" 
+    required 
+    [(ngModel)]="friendModel.inputFirstname"  #inputFirstname = "ngModel"
+    [class.is-invalid]="inputFirstname.invalid && inputFirstname.touched"
+    [class.is-valid]="inputFirstname.valid"
+    />
   </div>
+
+
 
   <div class="col-md-6">
     <label for="inputLastname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="inputLastname" name="inputLastname" [(ngModel)]="friendModel.inputLastname"/>
+    <input type="text" class="form-control" id="inputLastname" name="inputLastname" 
+    required 
+    [(ngModel)]="friendModel.inputLastname" #inputLastname = "ngModel"
+    [class.is-invalid]="inputLastname.invalid && inputLastname.touched"
+    [class.is-valid]="inputFirstname.valid"
+    />
   </div>
 
   <div class="col-md-6">
     <label for="inputEmail" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail" name="inputEmail" [(ngModel)]="friendModel.inputEmail"/>
+    <input type="email" class="form-control" id="inputEmail" name="inputEmail" 
+    required [(ngModel)]="friendModel.inputEmail" #inputEmail = "ngModel"
+    [class.is-invalid]="inputEmail.invalid && inputEmail.touched"
+    [class.is-valid]="inputEmail.valid"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputPhone" class="form-label">Phone</label>
-    <input type="tel" class="form-control" id="inputPhone" name="inputPhone" [(ngModel)]="friendModel.inputPhone"/>
+    <input type="tel" class="form-control" id="inputPhone" name="inputPhone" required [(ngModel)]="friendModel.inputPhone" #inputPhone = "ngModel"
+    [class.is-invalid]="inputPhone.invalid && inputPhone.touched"
+    [class.is-valid]="inputPhone.valid"/>
   </div>
 
   <div class="col-md-6">
     <label for="inputLanguage" class="form-label">Favorite lanuage</label>
-    <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage" [(ngModel)]="friendModel.selectFavoriteLanguage">
+    <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage" 
+    required 
+    [(ngModel)]="friendModel.selectFavoriteLanguage" #inputLanguage = "ngModel"
+    [class.is-invalid]="inputLanguage.invalid && inputLanguage.touched"
+    [class.is-valid]="inputLanguage.valid">
       <option *ngFor="let n of favoriteLanguage">{{ n }}</option>
     </select>
   </div>
