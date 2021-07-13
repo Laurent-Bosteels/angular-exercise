@@ -6,9 +6,15 @@ import { Friend } from './friend'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+  
   title = 'angular-intro';
   favoriteLanguage = ["Html", "Css", "Js", "Php", "Other"];
-  friendModel = new Friend("","","","","")
+  friendModel = new Friend("","","","","");
+
+  onSubmit() {
+    console.log(this.friendModel)
+  }
 
 }
