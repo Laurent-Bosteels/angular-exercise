@@ -26,7 +26,7 @@
     required [(ngModel)]="friendModel.inputLastname" 
     #inputLastname = "ngModel" pattern="[a-zA-Z ]*"
     [class.is-invalid]="inputLastname.invalid && inputLastname.touched"
-    [class.is-valid]="inputFirstname.valid"/>
+    [class.is-valid]="inputLastname.valid"/>
   </div>
 
   <div class="col-md-6">
