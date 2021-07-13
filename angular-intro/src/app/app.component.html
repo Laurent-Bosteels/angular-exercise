@@ -8,7 +8,7 @@
 </nav>
 
 <div class="container container-form">
-<form class="row g-3 needs-validation" #formName="ngForm">
+<form name="friendsForm" class="row g-3 needs-validation" #friendsForm="ngForm">
 
   <div class="col-md-6">
     <label for="inputFirstname" class="form-label">First Name</label>
@@ -59,7 +59,11 @@
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button 
+    type="submit" 
+    id="submit" 
+    class="btn btn-primary"
+    [disabled]="friendsForm.invalid">Submit</button>
   </div>
 
 </form>
