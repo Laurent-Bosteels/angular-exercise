@@ -42,7 +42,7 @@
     <label for="inputPhone" class="form-label">Phone</label>
     <input type="text" class="form-control" id="inputPhone" name="inputPhone" 
     required [(ngModel)]="friendModel.inputPhone" 
-    #inputPhone = "ngModel" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+    #inputPhone = "ngModel" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" minlength="3"
     [class.is-invalid]="inputPhone.invalid && inputPhone.touched"
     [class.is-valid]="inputPhone.valid"/>
   </div>
@@ -59,10 +59,7 @@
   </div>
 
   <div class="col-12">
-    <button 
-    type="submit" 
-    id="submit" 
-    class="btn btn-primary"
+    <button type="submit" id="submit" class="btn btn-primary"
     [disabled]="friendsForm.invalid">Submit</button>
   </div>
 
