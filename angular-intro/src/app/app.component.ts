@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   
   title = 'angular-intro';
   favoriteLanguage = ["Html", "Css", "Js", "Php", "Other"];
-  friendModel = new Friend("","","","","","");
+  friendModel = new Friend();
   allFriends : any;
 
   constructor (private addFriendService : AddFriendService) {}
