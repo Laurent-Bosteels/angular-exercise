@@ -1,102 +1,90 @@
-{{ friendModel | json }}
-
-
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand">Friends Book</a>
   </div>
 </nav>
 
-<div class="container container-form">
-<form #friendsForm="ngForm" (ngSubmit)="onSubmit()" name="friendsForm" class="row g-3 needs-validation">
+<div class="container">
+  <div class="row">
+    <div class="container-form">
+      
+      <form #friendsForm="ngForm" (ngSubmit)="onSubmit()" name="friendsForm" class="row g-3 needs-validation">
+        
+        <div class="col-md-6">
+          <label for="inputFirstname" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" required
+            [(ngModel)]="friendModel.inputFirstname" #inputFirstname="ngModel" pattern="[a-zA-Z ]*"
+            [class.is-invalid]="inputFirstname.invalid && inputFirstname.touched"
+            [class.is-valid]="inputFirstname.valid" />
+        </div>
 
-  <div class="col-md-6">
-    <label for="inputFirstname" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" 
-    required [(ngModel)]="friendModel.inputFirstname"  
-    #inputFirstname = "ngModel" pattern="[a-zA-Z ]*"
-    [class.is-invalid]="inputFirstname.invalid && inputFirstname.touched"
-    [class.is-valid]="inputFirstname.valid"/>
+        <div class="col-md-6">
+          <label for="inputLastname" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="inputLastname" name="inputLastname" required
+            [(ngModel)]="friendModel.inputLastname" #inputLastname="ngModel" pattern="[a-zA-Z ]*"
+            [class.is-invalid]="inputLastname.invalid && inputLastname.touched"
+            [class.is-valid]="inputLastname.valid" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail" name="inputEmail" required
+            [(ngModel)]="friendModel.inputEmail" #inputEmail="ngModel" [email]="true"
+            [class.is-invalid]="inputEmail.invalid && inputEmail.touched" [class.is-valid]="inputEmail.valid" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPhone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="inputPhone" name="inputPhone" required
+            [(ngModel)]="friendModel.inputPhone" #inputPhone="ngModel"
+            pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" minlength="3"
+            [class.is-invalid]="inputPhone.invalid && inputPhone.touched" [class.is-valid]="inputPhone.valid" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputWebsite" class="form-label">Website</label>
+          <input type="text" class="form-control" id="inputWebsite" name="inputWebsite" required
+            [(ngModel)]="friendModel.inputWebsite" #inputWebsite="ngModel"
+            [class.is-invalid]="inputWebsite.invalid && inputWebsite.touched" [class.is-valid]="inputWebsite.valid" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputLanguage" class="form-label">Favorite language</label>
+          <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage" required
+            [(ngModel)]="friendModel.selectFavoriteLanguage" #inputLanguage="ngModel"
+            [class.is-invalid]="inputLanguage.invalid && inputLanguage.touched" [class.is-valid]="inputLanguage.valid">
+            <option *ngFor="let n of favoriteLanguage">{{ n }}</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" id="submit" class="btn btn-primary" [disabled]="!friendsForm.form.valid">Submit</button>
+        </div>
+      </form>
+
+    </div> 
   </div>
 
-
-  <div class="col-md-6">
-    <label for="inputLastname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="inputLastname" name="inputLastname" 
-    required [(ngModel)]="friendModel.inputLastname" 
-    #inputLastname = "ngModel" pattern="[a-zA-Z ]*"
-    [class.is-invalid]="inputLastname.invalid && inputLastname.touched"
-    [class.is-valid]="inputLastname.valid"/>
-  </div>
-
-  <div class="col-md-6">
-    <label for="inputEmail" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail" name="inputEmail" 
-    required [(ngModel)]="friendModel.inputEmail" 
-    #inputEmail = "ngModel" [email]="true"
-    [class.is-invalid]="inputEmail.invalid && inputEmail.touched"
-    [class.is-valid]="inputEmail.valid"/>
-  </div>
-
-  <div class="col-md-6">
-    <label for="inputPhone" class="form-label">Phone</label>
-    <input type="text" class="form-control" id="inputPhone" name="inputPhone" 
-    required [(ngModel)]="friendModel.inputPhone" 
-    #inputPhone = "ngModel" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" minlength="3"
-    [class.is-invalid]="inputPhone.invalid && inputPhone.touched"
-    [class.is-valid]="inputPhone.valid"/>
-  </div>
-
-  <div class="col-md-6">
-    <label for="inputWebsite" class="form-label">Website</label>
-    <input type="text" class="form-control" id="inputWebsite" name="inputWebsite" 
-    required [(ngModel)]="friendModel.inputWebsite" 
-    #inputWebsite = "ngModel"
-    [class.is-invalid]="inputWebsite.invalid && inputWebsite.touched"
-    [class.is-valid]="inputWebsite.valid"/>
-  </div>
-
-  <div class="col-md-6">
-    <label for="inputLanguage" class="form-label">Favorite language</label>
-    <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage"
-    required [(ngModel)]="friendModel.selectFavoriteLanguage" 
-    #inputLanguage = "ngModel"
-    [class.is-invalid]="inputLanguage.invalid && inputLanguage.touched"
-    [class.is-valid]="inputLanguage.valid">
-      <option *ngFor="let n of favoriteLanguage">{{ n }}</option>
-    </select>
-  </div>
-
-  <div class="col-12">
-    <button type="submit" id="submit" class="btn btn-primary"
-    [disabled]="!friendsForm.form.valid">Submit</button>
-  </div>
-</form>
-
-<div class="row my-5">
-<div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let friend of allFriends"> 
-  <figure class="user-card orange">
-    <figcaption>
-      <h5>{{friend.inputFirstname + " " + friend.inputLastname}}</h5>
-      <h6>{{friend.inputEmail}}</h6>
-      <ul class="contacts">
-        <li>
-            {{friend.inputPhone}}
-        </li>
-        <li>
-          <a href="http://{{friend.inputWebsite}}">
-            {{friend.inputWebsite}}
-          </a>
-        </li>
-      </ul>
-      <div class="clearfix">
-        <span class="badge badge-pill badge-info">{{friend.selectFavoriteLanguage}}</span>
+    <div class="row my-5">
+        <div class="col-lg-3 col-md-6 col-sm-6 friend" *ngFor="let friend of allFriends">
+          <figure class="user-card orange">
+            <figcaption>
+              <h5>{{friend.inputFirstname + " " + friend.inputLastname}}</h5>
+              <h6>{{friend.inputEmail}}</h6>
+              <ul class="contacts">
+                <li>
+                  {{friend.inputPhone}}
+                </li>
+                <li>
+                  <a href="http://{{friend.inputWebsite}}">
+                    {{friend.inputWebsite}}
+                  </a>
+                </li>
+              </ul>
+              <div class="clearfix">
+                <span class="badge badge-pill badge-info">{{friend.selectFavoriteLanguage}}</span>
+              </div>
+            </figcaption>
+          </figure>
       </div>
-    </figcaption>
-  </figure>
-</div>
-</div>
-
-
-</div>
-
+    </div>
