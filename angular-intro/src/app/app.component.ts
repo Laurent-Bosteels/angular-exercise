@@ -10,7 +10,7 @@ import { AddFriendService } from './add-friend.service';
 
 export class AppComponent implements OnInit {
   
-  title = 'angular-intro';
+  title = 'Friends Book';
   favoriteLanguage = ["Html", "Css", "Js", "Php", "Other"];
   friendModel = new Friend();
   allFriends : any;
@@ -38,5 +38,5 @@ export class AppComponent implements OnInit {
           return response.json();
       }).then(data => (this.allFriends = data));
   }
-
+  
   }

@@ -1,15 +1,15 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand">Friends Book</a>
+    <a class="navbar-brand">{{title}}</a>
   </div>
 </nav>
 
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="container-form">
-      
+
       <form #friendsForm="ngForm" (ngSubmit)="onSubmit()" name="friendsForm" class="row g-3 needs-validation">
-        
+
         <div class="col-md-6">
           <label for="inputFirstname" class="form-label">First Name</label>
           <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" required
@@ -61,30 +61,29 @@
           <button type="submit" id="submit" class="btn btn-primary" [disabled]="!friendsForm.form.valid">Submit</button>
         </div>
       </form>
-
-    </div> 
+    </div>
   </div>
 
-    <div class="row my-5">
-        <div class="col-lg-3 col-md-6 col-sm-6 friend" *ngFor="let friend of allFriends">
-          <figure class="user-card orange">
-            <figcaption>
-              <h5>{{friend.inputFirstname + " " + friend.inputLastname}}</h5>
-              <h6>{{friend.inputEmail}}</h6>
-              <ul class="contacts">
-                <li>
-                  {{friend.inputPhone}}
-                </li>
-                <li>
-                  <a href="http://{{friend.inputWebsite}}">
-                    {{friend.inputWebsite}}
-                  </a>
-                </li>
-              </ul>
-              <div class="clearfix">
-                <span class="badge badge-pill badge-info">{{friend.selectFavoriteLanguage}}</span>
-              </div>
-            </figcaption>
-          </figure>
-      </div>
+  <div class="row my-5">
+    <div class="col-lg-3 col-md-6 col-sm-6 friend" *ngFor="let friend of allFriends">
+      <figure class="user-card orange">
+        <figcaption>
+          <h5>{{friend.inputFirstname + " " + friend.inputLastname}}</h5>
+          <h6>{{friend.inputEmail}}</h6>
+          <ul class="contacts">
+            <li>
+              {{friend.inputPhone}}
+            </li>
+            <li>
+              <a href="http://{{friend.inputWebsite}}">
+                {{friend.inputWebsite}}
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix">
+            <span class="badge badge-pill badge-info">{{friend.selectFavoriteLanguage}}</span>
+          </div>
+        </figcaption>
+      </figure>
     </div>
+  </div>
