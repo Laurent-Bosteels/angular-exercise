@@ -48,7 +48,16 @@
   </div>
 
   <div class="col-md-6">
-    <label for="inputLanguage" class="form-label">Favorite lanuage</label>
+    <label for="inputWebsite" class="form-label">Website</label>
+    <input type="text" class="form-control" id="inputWebsite" name="inputWebsite" 
+    required [(ngModel)]="friendModel.inputWebsite" 
+    #inputWebsite = "ngModel"
+    [class.is-invalid]="inputWebsite.invalid && inputWebsite.touched"
+    [class.is-valid]="inputWebsite.valid"/>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputLanguage" class="form-label">Favorite language</label>
     <select id="inputLanguage" class="form-select" name="selectFavoriteLanguage"
     required [(ngModel)]="friendModel.selectFavoriteLanguage" 
     #inputLanguage = "ngModel"
@@ -62,6 +71,32 @@
     <button type="submit" id="submit" class="btn btn-primary"
     [disabled]="!friendsForm.form.valid">Submit</button>
   </div>
-
 </form>
+
+<div class="row my-5">
+<div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let friend of allFriends"> 
+  <figure class="user-card orange">
+    <figcaption>
+      <h5>{{friend.inputFirstname + " " + friend.inputLastname}}</h5>
+      <h6>{{friend.inputEmail}}</h6>
+      <ul class="contacts">
+        <li>
+            {{friend.inputPhone}}
+        </li>
+        <li>
+          <a href="http://{{friend.inputWebsite}}">
+            {{friend.inputWebsite}}
+          </a>
+        </li>
+      </ul>
+      <div class="clearfix">
+        <span class="badge badge-pill badge-info">{{friend.selectFavoriteLanguage}}</span>
+      </div>
+    </figcaption>
+  </figure>
 </div>
+</div>
+
+
+</div>
+

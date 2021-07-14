@@ -8,14 +8,12 @@ import { Friend } from './friend';
 
 export class AddFriendService {
 
-  
-  constructor(private _http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  url = '';
+  url = 'http://localhost:6969/allFriends/';
 
    addFriend(friend : Friend) {
-     return this._http.post<any>(this.url, friend)
-
+     return this.http.post(this.url, friend)
    }
 
 }
